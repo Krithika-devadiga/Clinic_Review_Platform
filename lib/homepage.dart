@@ -23,20 +23,30 @@ class HomePage extends StatelessWidget {
             return Center(child: Text("No clinics found. Add one in Firestore."));
           }
 
-          return ListView.builder(
+          return ListView.separated(
             itemCount: docs.length,
+            separatorBuilder: (context, index) => Divider(),
             itemBuilder: (context, index) {
               final clinic = docs[index];
-              return ListTile(
-                title: Text(clinic['name'] ?? 'Unnamed Clinic'),
-                subtitle: Text(clinic['location'] ?? ''),
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/clinic',
-                    arguments: clinic.id, // Pass clinicId to ClinicDetailsPage
-                  );
-                },
+              return Card(
+                elevation: 4,
+                margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListTile(
+                  leading: Icon(Icons.local_hospital, color: Colors.teal),
+                  title: Text(clinic['name'] ?? 'Unnamed Clinic'),
+                  subtitle: Text(clinic['location'] ?? 'Unknown Location'),
+                  trailing: Icon(Icons.arrow_forward_ios, size: 16),
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/clinic',
+                      arguments: clinic.id,
+                    );
+                  },
+                ),
               );
             },
           );
@@ -44,11 +54,10 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigate to AddReviewPage — optionally pass a default clinicId
           Navigator.pushNamed(context, '/addReview');
         },
         child: Icon(Icons.add),
-        tooltip: "Add Review",
+        tooltip: "Add Review"
       ),
     );
   }

@@ -33,6 +33,38 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Clinic Review App',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true, // Optional for modern design
+        primarySwatch: Colors.teal,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 211, 82, 129),
+          foregroundColor: Colors.white,
+          elevation: 2,
+        ),
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.black87,
+              displayColor: Colors.black87,
+            ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            backgroundColor: Colors.teal,
+            textStyle: const TextStyle(fontSize: 16),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          filled: true,
+          fillColor: Colors.teal.shade50,
+        ),
+      ),
+
       initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(),

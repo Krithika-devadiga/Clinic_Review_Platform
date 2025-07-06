@@ -36,6 +36,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(controller: emailController, decoration: InputDecoration(labelText: 'Email')),
+              const SizedBox(height: 24),
               TextField(controller: passwordController, decoration: InputDecoration(labelText: 'Password'), obscureText: true),
               SizedBox(height: 20),
               ElevatedButton(onPressed: () => login(context), child: Text("Login")),

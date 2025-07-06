@@ -44,29 +44,33 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Register')),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: [
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: register,
-              child: Text('Register'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pushNamed(context, '/'),
-              child: Text('Already have an account? Login'),
-            )
-          ],
+      body: Center(
+        child: SizedBox(
+          width: 300, // Same width as LoginPage
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'Email'),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(labelText: 'Password'),
+              ),
+              const SizedBox(height: 24),
+              ElevatedButton(
+                onPressed: () => register(),
+                child: Text("Register"),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pushReplacementNamed(context, '/'),
+                child: Text("Already have an account? Login"),
+              ),
+            ],
+          ),
         ),
       ),
     );
