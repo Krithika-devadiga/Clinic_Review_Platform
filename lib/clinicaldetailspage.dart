@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 
 
@@ -15,7 +14,6 @@ class ClinicDetailsPage extends StatelessWidget {
         body: Center(child: Text("❌ Error: No clinic ID provided.")),
       );
     }
-
 
 
     final clinicId = args;
@@ -73,17 +71,90 @@ class ClinicDetailsPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: ListTile(
-                        leading: Icon(Icons.person, color: Colors.indigo),
-                        title: Text(comment),
-                        subtitle: Text('Rating: $rating'),
-                        trailing:  Row(
-  mainAxisSize: MainAxisSize.min,
-  children: List.generate(
-    int.tryParse(rating) ?? 0,
-    (index) => Icon(Icons.star, color: Colors.amber, size: 20),
+                          leading: Icon(Icons.person, color: Colors.indigo),
+  title: Text(comment),
+  subtitle: Text('Rating: $rating'),
+  trailing: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      ...List.generate(
+        int.tryParse(rating) ?? 0,
+        (index) => Icon(Icons.star, color: Colors.amber, size: 20),
+      ),
+      SizedBox(width: 8),
+      if (review['userId'] == FirebaseAuth.instance.currentUser?.uid)
+        IconButton(
+          icon: Icon(Icons.delete, color: Colors.red),
+          tooltip: "Delete Review",
+          onPressed: () async {
+            final confirm = await showDialog<bool>(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text("Delete Review"),
+                content: Text("Are you sure you want to delete this review?"),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, false),
+                    child: Text("Cancel"),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, true),
+                    child: Text("Delete"),
+                  ),
+                ],
+              ),
+            );
+
+            if (confirm == true) {
+              await FirebaseFirestore.instance
+                  .collection('reviews')
+                  .doc(review.id)
+                  .delete();
+
+              final updatedReviews = await FirebaseFirestore.instance
+                  .collection('reviews')
+                  .where('clinicId', isEqualTo: clinicId)
+                  .get();
+
+              if (updatedReviews.docs.isNotEmpty) {
+                final allRatings = updatedReviews.docs
+                    .map((doc) => doc['rating'] as int)
+                    .toList();
+                final avg = allRatings.reduce((a, b) => a + b) / allRatings.length;
+
+                await FirebaseFirestore.instance
+                    .collection('clinics')
+                    .doc(clinicId)
+                    .update({'averageRating': avg});
+              } else {
+                await FirebaseFirestore.instance
+                    .collection('clinics')
+                    .doc(clinicId)
+                    .update({'averageRating': FieldValue.delete()});
+              }
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("Review deleted")),
+              );
+            }
+          },
+        ),
+    ],
   ),
+
+
+
+
+
+
+
+
                       ),
-                      ),
+
+
+
+
+
                     );
                   },
                 );
@@ -95,3 +166,5 @@ class ClinicDetailsPage extends StatelessWidget {
     );
   }
 }
+
+

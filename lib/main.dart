@@ -5,7 +5,9 @@ import 'AddReviewPage.dart';
 import 'ClinicalDetailsPage.dart';
 import 'HomePage.dart';
 import 'LoginPage.dart';
-import 'RegisterPage.dart'; // ✅ Include register page
+import 'RegisterPage.dart'; 
+
+import 'SplashScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,7 +69,9 @@ class MyApp extends StatelessWidget {
 
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
+        '/': (context) => SplashScreen(),
+        '/login': (context) => LoginPage(),
+
         '/home': (context) => HomePage(),
         '/clinic': (context) => ClinicDetailsPage(),
         '/addReview': (context) => AddReviewPage(),
