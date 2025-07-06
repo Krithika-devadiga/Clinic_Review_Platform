@@ -16,7 +16,18 @@ class _AddReviewPageState extends State<AddReviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final clinicId = ModalRoute.of(context)!.settings.arguments as String;
+    final args = ModalRoute.of(context)!.settings.arguments;
+
+
+
+
+    final clinicId = args is String ? args : null;
+    if (clinicId == null) {
+    return Scaffold(
+    appBar: AppBar(title: Text("Submit Review")),
+    body: Center(child: Text("Error: No clinic selected.")),
+  );
+}
     final userId = FirebaseAuth.instance.currentUser!.uid;
     final reviewDoc = FirebaseFirestore.instance.collection('reviews').doc('$clinicId-$userId');
 
