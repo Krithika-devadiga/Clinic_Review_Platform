@@ -18,45 +18,49 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 
 ## 📂 Folder Structure
 
-
-
-
-
-
-
-
-
-
-
+- `main.dart` – App entry point  
+- `LoginPage.dart` – Handles user login  
+- `RegisterPage.dart` – User registration screen  
+- `HomePage.dart` – Lists clinics from Firestore  
+- `ClinicDetailsPage.dart` – Shows reviews for selected clinic  
+- `AddReviewPage.dart` – Submit/edit clinic reviews  
 
 ---
 
 ## ⚙️ Getting Started
 
-🔨 Prerequisites
-✅ Flutter SDK installed
+### 🔨 Prerequisites
 
-✅ Firebase project created
+- ✅ Flutter SDK installed
+- ✅ Firebase project created
+- ✅ Android/iOS emulator or physical device
 
-✅ Android/iOS emulator or physical device
+---
 
+## 🔑 Firebase Setup
 
-🔑 Firebase Setup :
+1. Add Firebase to your Flutter project using the Firebase console.
+2. Enable **Email/Password** authentication in Firebase Auth.
+3. Create the following **Firestore Collections**:
 
-- Make sure to initialize Firebase in main.dart with correct config.
+### 🔥 Firestore Collections
 
-- Create a Firestore collection: clinics
+#### `clinics`
+- `name`: *String* → `"City Health Clinic"`
+- `location`: *String* → `"Chennai"`
+- `averageRating`: *Number* → `Optional`
 
-- Fields: name (String), location (String), averageRating (Number, optional)
+#### `reviews`
+- `clinicId`: *String* → Document ID of the clinic
+- `userId`: *String* → UID of reviewer
+- `rating`: *Number*
+- `comment`: *String*
+- `timestamp`: *Timestamp*
 
-- Create a reviews collection to store user reviews.
+---
 
-💡 Firebase Auth
-Enable Email/Password login method in Firebase Console.
+## ▶️ Run the App
 
-🚀 Run the app
-
-1. Clone the repo:
 ```bash
 git clone https://github.com/your-username/Clinic_Review_Platform.git
 cd Clinic_Review_Platform
