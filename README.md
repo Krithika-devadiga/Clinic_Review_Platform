@@ -1,16 +1,72 @@
-# clinicreview
+# 🏥 Clinic Review App
 
-A new Flutter project.
+A Flutter app that allows users to register, login, view clinics, add/edit reviews, and see ratings. Built using Firebase Authentication and Firestore.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 User Registration & Login (Firebase Auth)
+- 🏥 List of Clinics from Firestore
+- ✍️ Add/Edit/Delete Reviews
+- ⭐ Display average ratings
+- 📊 Star rating display
+- 🎯 Responsive UI with modern design
+- 📷 Splash screen (optional)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📂 Folder Structure
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## ⚙️ Getting Started
+
+🔨 Prerequisites
+✅ Flutter SDK installed
+
+✅ Firebase project created
+
+✅ Android/iOS emulator or physical device
+
+
+🚀 Run the app
+
+1. Clone the repo:
+```bash
+git clone https://github.com/your-username/Clinic_Review_Platform.git
+
+2. Navigate into the project:
+cd Clinic_Review_Platform
+
+3. Install dependencies:
+flutter pub get
+
+4. Run the app:
+flutter run
+
+
+🔑 Firebase Setup :
+
+- Make sure to initialize Firebase in main.dart with correct config.
+
+- Create a Firestore collection: clinics
+
+- Fields: name (String), location (String), averageRating (Number, optional)
+
+- Create a reviews collection to store user reviews.
+
+
+💡 Firebase Auth
+Enable Email/Password login method in Firebase Console.
