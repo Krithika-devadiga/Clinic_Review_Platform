@@ -41,6 +41,19 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 ✅ Android/iOS emulator or physical device
 
 
+🔑 Firebase Setup :
+
+- Make sure to initialize Firebase in main.dart with correct config.
+
+- Create a Firestore collection: clinics
+
+- Fields: name (String), location (String), averageRating (Number, optional)
+
+- Create a reviews collection to store user reviews.
+
+💡 Firebase Auth
+Enable Email/Password login method in Firebase Console.
+
 🚀 Run the app
 
 1. Clone the repo:
@@ -55,18 +68,3 @@ flutter pub get
 
 4. Run the app:
 flutter run
-
-
-🔑 Firebase Setup :
-
-- Make sure to initialize Firebase in main.dart with correct config.
-
-- Create a Firestore collection: clinics
-
-- Fields: name (String), location (String), averageRating (Number, optional)
-
-- Create a reviews collection to store user reviews.
-
-
-💡 Firebase Auth
-Enable Email/Password login method in Firebase Console.
