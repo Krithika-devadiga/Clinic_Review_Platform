@@ -61,23 +61,23 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 ---
 
 ## 🖼️ Splash Screen
-1. Add the dependency in `pubspec.yaml`:
+**1. Add the dependency in `pubspec.yaml`:**
 dev_dependencies:
   flutter_native_splash: ^2.3.2
 
-2. Add config:
+2. Add the config:
 flutter_native_splash:
   color: "#ffffff"
   image: assets/splash.png
   android: true
   ios: true
 
-3. Create your image under assets/splash.png and declare the assets:
+3. Add your splash image under assets/ and declare it:
 flutter:
   assets:
     - assets/splash.png
     
-4. Run:
+4. Run the following commands in terminal:
 flutter pub get
 flutter pub run flutter_native_splash:create
 
