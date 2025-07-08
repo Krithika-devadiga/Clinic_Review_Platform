@@ -59,12 +59,6 @@ Enable Email/Password login method in Firebase Console.
 1. Clone the repo:
 ```bash
 git clone https://github.com/your-username/Clinic_Review_Platform.git
-
-2. Navigate into the project:
 cd Clinic_Review_Platform
-
-3. Install dependencies:
 flutter pub get
-
-4. Run the app:
 flutter run
