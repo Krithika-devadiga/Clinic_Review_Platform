@@ -12,7 +12,7 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 - ⭐ Display average ratings
 - 📊 Star rating display
 - 🎯 Responsive UI with modern design
-- 📷 Splash screen (optional)
+- 🖼️ Splash screen on app launch
 
 ---
 
@@ -23,7 +23,8 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 - `RegisterPage.dart` – User registration screen  
 - `HomePage.dart` – Lists clinics from Firestore  
 - `ClinicDetailsPage.dart` – Shows reviews for selected clinic  
-- `AddReviewPage.dart` – Submit/edit clinic reviews  
+- `AddReviewPage.dart` – Submit/edit clinic reviews 
+- `SplashScreen.dart` - Displays initial splash image before the app loads  
 
 ---
 
@@ -58,6 +59,30 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 - `timestamp`: *Timestamp*
 
 ---
+
+## 🖼️ Splash Screen
+1. Add the dependency in `pubspec.yaml`:
+dev_dependencies:
+  flutter_native_splash: ^2.3.2
+
+2. Add config:
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/splash.png
+  android: true
+  ios: true
+
+3. Create your image under assets/splash.png and declare the assets:
+flutter:
+  assets:
+    - assets/splash.png
+    
+4. Run:
+flutter pub get
+flutter pub run flutter_native_splash:create
+
+
+
 
 ## ▶️ Run the App
 
