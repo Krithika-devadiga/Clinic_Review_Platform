@@ -67,7 +67,7 @@ A Flutter app that allows users to register, login, view clinics, add/edit revie
 dev_dependencies:
   flutter_native_splash: ^2.3.2
 
-2. Add the config:
+**2. Add the config:**
 
 flutter_native_splash:
   color: "#ffffff"
@@ -75,12 +75,12 @@ flutter_native_splash:
   android: true
   ios: true
 
-3. Add your splash image under assets/ and declare it:
+**3. Add your splash image under assets/ and declare it:**
 flutter:
   assets:
     - assets/splash.png
 
-4. Run the following commands in terminal:
+**4. Run the following commands in terminal:**
 flutter pub get
 flutter pub run flutter_native_splash:create
 
