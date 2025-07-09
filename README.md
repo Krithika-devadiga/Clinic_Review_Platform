@@ -75,6 +75,7 @@ flutter_native_splash:
   android: true
   ios: true
 
+
 **3. Add your splash image under assets/ and declare it:**
 
 flutter:
