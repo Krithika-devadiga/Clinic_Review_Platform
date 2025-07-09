@@ -76,11 +76,13 @@ flutter_native_splash:
   ios: true
 
 **3. Add your splash image under assets/ and declare it:**
+
 flutter:
   assets:
     - assets/splash.png
 
 **4. Run the following commands in terminal:**
+
 flutter pub get
 flutter pub run flutter_native_splash:create
 
